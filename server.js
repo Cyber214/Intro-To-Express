@@ -1,6 +1,8 @@
 // import modules
 
 import express from 'express'
+import { cars } from './data/cars-data.js'
+import * as carsData from "./data/cars-data.js"
 
 // create Express app
 
@@ -22,6 +24,16 @@ app.get('/', function(req, res) {
 
 app.get('/home', function(req, res) {
   res.render('home')
+})
+
+app.get('/cars', function(req, res) {
+  res.render('cars/index', {
+    cars: cars
+  })
+})
+
+app.get('/', function(req, res) {
+  res.redirect('/home')
 })
 
 // tell the app to listen on port 3000
